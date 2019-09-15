@@ -1,0 +1,95 @@
+<!-- Our hibernate configuration xml file contains database connection 
+related properties and mapping classes. -->
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+
+<!-- Account -->
+<class name="models.Account" table="Account">
+<id name="account_id" column ="account_id" type="integer" >
+<generator class="assigned"></generator>
+</id>
+<property name="password" column="pass"  type="string"></property>
+<property name="confirmation" column="confirmation" type="string" ></property>
+<property name="firstName" column ="first_name"  type="string"></property>
+<property name="lastName" column ="last_name"  type="string"></property>
+<property name="email" column ="email" type="string"></property>
+<property name="address_id" column ="address_id" type="integer"></property>
+</class>
+
+<!-- Address -->
+<class name="models.Address" table="Address">
+<id name="address_id" column ="address_id" type="integer">
+<generator class="assigned"></generator>
+</id>
+<property name="street" column="street" type="string"></property>
+<property name="city" column="city"  type="string"></property>
+<property name="province" column="province" type="string"></property>
+<property name="country" column ="country"  type="string"></property>
+<property name="zipcode" column ="zipcode"  type="string"></property>
+<property name="phone" column ="phone" type="string"></property>
+</class>
+
+<!-- Band -->
+<class name="models.Band" table="Band">
+<id name="band_id" column ="band_id" type="integer">
+<generator class="assigned"></generator>
+</id>
+<property name="band" column="band" type="string"></property>
+<property name="style" column="style"  type="string"></property>
+</class>
+
+<!-- Category -->
+<class name="models.Category" table="Category">
+<id name="categoryID" column ="categoryID" type="integer">
+<generator class="assigned"></generator>
+</id>
+<property name="categoryName" column="categoryName" type="string"></property>
+</class>
+
+<!-- CD -->
+<class name="models.CD" table="CD">
+<id name="cd_id" column ="cd_id" type="integer">
+<generator class="assigned"></generator>
+</id>
+<property name="title" column="title" type="string"></property>
+<property name="description" column="description" type="string"></property>
+<property name="link" column="link" type="string"></property>
+<property name="price" column="price"  type="float"></property>
+<property name="band_id" column="band_id" type="integer"></property>
+<property name="categoryID" column="categoryID" type="integer"></property>
+</class>
+
+<!-- Purchase -->
+<class name="models.Purchase" table="Purchase">
+<id name="purchase_id" column ="purchase_id" type="integer">
+<generator class="assigned"></generator>
+</id>
+<property name="account_id" column="user_id" type="integer"></property>
+<property name="address_id" column="address_id"  type="integer"></property>
+<property name="date_p" column="date_p" type="date"></property>
+<property name="stat" column ="stat"  type="string" insert="false" update="false"></property>
+</class>
+
+<!-- PItem -->
+<class name="models.PItem" table="PItem">
+<id name="pitem_id" column ="pitem_id" type="integer">
+<generator class="native"></generator>
+</id>
+<property name="p_id" column="p_id" type="integer"></property>
+<property name="cd_id" column="cd_id"  type="integer"></property>
+<property name="quantity" column="quantity" type="integer"></property>
+</class>
+
+<!-- VisitEvent -->
+<class name="models.VisitEvent" table="VisitEvent">
+<id name="visit_id" column ="visit_id" type="integer">
+<generator class="assigned"></generator>
+</id>
+<property name="v_date"  column="v_date" type="date"></property>
+<property name="cd_id" column="cd_id"  type="string"></property>
+<property name="event_type" column="event_type" type="string"></property>
+</class>
+
+</hibernate-mapping>

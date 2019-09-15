@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>TitaniumX</display-name>
+	<servlet>
+		<servlet-name>MainServlet</servlet-name>
+		<servlet-class>controllers.MainServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MainServlet</servlet-name>
+		<url-pattern>/register</url-pattern>
+		<url-pattern>/login</url-pattern>
+		<url-pattern>/logout</url-pattern>
+		<url-pattern>/addToCart</url-pattern>
+		<url-pattern>/removeFromCart</url-pattern>
+		<url-pattern>/orderCheckout</url-pattern>
+		<url-pattern>/categoryList</url-pattern>
+		<url-pattern>/productList</url-pattern>
+		<url-pattern>/productInfo</url-pattern>
+		<url-pattern>/viewAccount</url-pattern>
+		<url-pattern>/confirmOrder</url-pattern>
+		<url-pattern>/sendEmail</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<display-name>OrderProcessorWebService</display-name>
+		<servlet-name>OrderProcessorWebService</servlet-name>
+		<servlet-class>ws.OrderProcessorWebService</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OrderProcessorWebService</servlet-name>
+		<url-pattern>/OrderProcessorWebService</url-pattern>
+	</servlet-mapping>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>TitaniumX</web-resource-name>
+			<url-pattern>/*</url-pattern>
+		</web-resource-collection>
+		<user-data-constraint>
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint> 
+</web-app>
